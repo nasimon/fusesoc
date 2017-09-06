@@ -174,6 +174,7 @@ def list_systems(args):
 def run_backend(export, do_configure, do_build, do_run, flags, system, backendargs):
     tool_error = "No tool was supplied on command line or found in '{}' core description"
     core = _get_core(system)
+    flags['mor1kx_monitor'] = True
     tool = core.get_tool(flags)
     if not tool:
         logger.error(tool_error.format(system))
