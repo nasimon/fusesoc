@@ -16,6 +16,7 @@ logger = logging.getLogger(__name__)
 
 class File(object):
     def __init__(self, tree):
+        self.copyto = ""
         self.file_type = ''
         self.is_include_file = False
         if type(tree) is dict:
@@ -258,6 +259,9 @@ class Core:
         else:
             s = "{} : Target '{}' has no toplevel"
             raise SyntaxError(s.format(self.name, target.name))
+
+    def get_work_root(self, flags):
+        return self._get_target(flags).name
 
     def _get_vpi(self, flags):
         vpi = {}
